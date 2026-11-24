@@ -15,6 +15,8 @@ ENTRY = "CAUTION: If you meet yourself, do not lend yourself money \u2014 he nev
 
 
 def main() -> None:
+    # Gate self-check: the sealed scorer only accepts 1-120 chars.
+    assert 1 <= len(ENTRY) <= 120, f"entry is {len(ENTRY)} chars, outside 1-120"
     out_dir = os.environ.get("OUTPUT_DIR", "/output")
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "entry.txt")
